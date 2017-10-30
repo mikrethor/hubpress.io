@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Externaliser un plugin Eclipse</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://mikrethor.github.io/blog/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="//mikrethor.github.io/blog/themes/casper/assets/css/screen.css?v=1509327011640" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+    <link rel="canonical" href="https://mikrethor.github.io/blog/2011/09/17/Externaliser-un-plugin-Eclipse.html" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="Xavier&#x27;s Thoughts" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Externaliser un plugin Eclipse" />
+    <meta property="og:description" content="Afin de ne pas polluer un environnement Eclipse existant lors du test d&amp;#8217;un plugin, Eclipse offre la possibilité d&amp;#8217;externaliser ses plugins. Pour cela, il faut utiliser les fichiers link. Ces fichiers sont de simples fichier texte contenant le chemin vers le plugin. Exemple : Plugin m2. Le" />
+    <meta property="og:url" content="https://mikrethor.github.io/blog/2011/09/17/Externaliser-un-plugin-Eclipse.html" />
+    <meta property="article:published_time" content="2011-09-17T00:00:00.000Z" />
+    <meta property="article:tag" content="Eclipse" />
+    <meta property="article:tag" content="Plugins" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Externaliser un plugin Eclipse" />
+    <meta name="twitter:description" content="Afin de ne pas polluer un environnement Eclipse existant lors du test d&amp;#8217;un plugin, Eclipse offre la possibilité d&amp;#8217;externaliser ses plugins. Pour cela, il faut utiliser les fichiers link. Ces fichiers sont de simples fichier texte contenant le chemin vers le plugin. Exemple : Plugin m2. Le" />
+    <meta name="twitter:url" content="https://mikrethor.github.io/blog/2011/09/17/Externaliser-un-plugin-Eclipse.html" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Xavier's Thoughts",
+    "author": {
+        "@type": "Person",
+        "name": "mikrethor",
+        "image": "https://avatars2.githubusercontent.com/u/957393?v=4",
+        "url": "https://mikrethor.github.io/blog/author/mikrethor/",
+        "sameAs": "https://mikrethor.github.io/blog/",
+        "description": "Java, Java EE forever or not... Angular may be...."
+    },
+    "headline": "Externaliser un plugin Eclipse",
+    "url": "https://mikrethor.github.io/blog/2011/09/17/Externaliser-un-plugin-Eclipse.html",
+    "datePublished": "2011-09-17T00:00:00.000Z",
+    "keywords": "Eclipse, Plugins",
+    "description": "Afin de ne pas polluer un environnement Eclipse existant lors du test d&amp;#8217;un plugin, Eclipse offre la possibilité d&amp;#8217;externaliser ses plugins. Pour cela, il faut utiliser les fichiers link. Ces fichiers sont de simples fichier texte contenant le chemin vers le plugin. Exemple : Plugin m2. Le"
+}
+    </script>
+
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="Xavier&#x27;s Thoughts" href="https://mikrethor.github.io/blog/rss/" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/atom-one-dark.min.css">
+    
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</head>
+<body class="post-template tag-Eclipse tag-Plugins nav-closed">
+
+    
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-Eclipse tag-Plugins">
+
+        <header class="post-header">
+            <h1 class="post-title">Externaliser un plugin Eclipse</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2011-09-17">17 September 2011</time>  on <a href="https://mikrethor.github.io/blog/tag/Eclipse/">Eclipse</a>, <a href="https://mikrethor.github.io/blog/tag/Plugins/">Plugins</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <div class="paragraph">
+<p>Afin de ne pas polluer un environnement Eclipse existant lors du test d&#8217;un plugin, Eclipse offre la possibilité d&#8217;externaliser ses plugins.
+Pour cela, il faut utiliser les fichiers link. Ces fichiers sont de simples fichier texte contenant le chemin vers le plugin.</p>
+</div>
+<div class="paragraph">
+<p>Exemple : Plugin m2.</p>
+</div>
+<div class="paragraph">
+<p>Le plugin m2 est installé dans le répertoire suivant :
+D:\tools\org\sonatype\m2eclipse-plugin\0.12.1</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-&gt; features
+-&gt; plugins</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Puis un fichier m2.link est initialisé dans le répertoire dropins d&#8217;Eclipse. Ce fichier contient la ligne suivante :
+path=D:/tools/org/sonatype/m2eclipse-plugin/0.12.1</p>
+</div>
+<div class="paragraph">
+<p>Lors du lancement d&#8217;Eclipse, il est possible de vérifier que le plugin est installé. Pour le désinstaller, il suffit de supprimer le fichier et de lancer Eclipse en mode clean.</p>
+</div>
+<div class="paragraph">
+<p>Le plus dur est de récupérer les répertoires d&#8217;un plugin au travers d&#8217;un update site. Heureusement, il est possible de récupérer les fichiers spécifique à un plugin en lançant Eclipse avec le paramètre -configuration.
+Ce paramètre permet de spécifier un répertoire qui contiendra la configuration spécifique à notre Eclipse. Il permet d&#8217;avoir un même répertoire pour l&#8217;ide de base pour plusieurs projets différents. Ainsi, ces projets peuvent avoir des plugins différents et utiliser le même répertoire de base pour l&#8217;ide. Le répertoire configuration contient les éléments suivants :</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-&gt;configuration
+-&gt;p2
+-&gt;artifacts.xml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Avec ce paramètrage, il est possible d&#8217;utiliser l&#8217;installeur de plugin. Une fois l&#8217;installation d&#8217;un plugin terminée, le répertoire configuration contient les éléments suivants :</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-&gt;configuration
+-&gt;p2
+-&gt;artifacts.xml
+-&gt;plugins
+-&gt;features</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Les répertoires plugins et features correspondent au plugin nouvellement installé.</p>
+</div>
+<div class="paragraph">
+<p>Pour externaliser ce plugin, il faut copier les répertoires plugins et features dans un nouveau répertoire.
+Voir le plugin m2 plus haut.</p>
+</div>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="https://mikrethor.github.io/blog/author/mikrethor/" style="background-image: url(https://avatars2.githubusercontent.com/u/957393?v&#x3D;4)"><span class="hidden">mikrethor's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="https://mikrethor.github.io/blog/author/mikrethor/">mikrethor</a></h4>
+
+                    <p>Java, Java EE forever or not... Angular may be....</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Montreal</span>
+                    <span class="author-link icon-link"><a href="https://mikrethor.github.io/blog/">https://mikrethor.github.io/blog/</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Externaliser%20un%20plugin%20Eclipse&amp;url=https://mikrethor.github.io/blog/2011/09/17/Externaliser-un-plugin-Eclipse.html"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://mikrethor.github.io/blog/2011/09/17/Externaliser-un-plugin-Eclipse.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://mikrethor.github.io/blog/2011/09/17/Externaliser-un-plugin-Eclipse.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+
+        <section class="post-comments">
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+          var disqus_shortname = 'https-mikrethor-github-io-blog'; // required: replace example with your forum shortname
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </section>
+
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="https://mikrethor.github.io/blog">Xavier&#x27;s Thoughts</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="http://hubpress.io">HubPress</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();
+      </script>
+
+    <script type="text/javascript" src="//mikrethor.github.io/blog/themes/casper/assets/js/jquery.fitvids.js?v=1509327011640"></script>
+    <script type="text/javascript" src="//mikrethor.github.io/blog/themes/casper/assets/js/index.js?v=1509327011640"></script>
+
+</body>
+</html>
