@@ -1,10 +1,8 @@
 = Utiliser des plugins Maven avec des sources en dehors du répertoire src/main/java
-Xavier BOUCLET
-2015-07-21
-:jbake-type: post
-:jbake-status: published
-:jbake-tags: blog, asciidoc
-:idprefix:
+// :hp-image: /covers/cover.png
+:published_at: 2015-07-21
+:hp-tags: Maven, Plugin Execution, No convention
+:hp-alt-title: Utiliser des plugins Maven avec des sources en dehors du répertoire 
 
 Tout d'abord, le non respect des conventions limite le choix des plugins utilisables par Maven. Par exemple, je n'ai pas réussi à faire marcher le plugin PMD. En effet, l'option sourcepath n'existe pas sur tous les plugins.
 
