@@ -1,10 +1,8 @@
 = [JBOSS] Utiliser une configuration en dehors du JBOSS_HOME
-Xavier BOUCLET
-2011-08-16
-:jbake-type: post
-:jbake-status: published
-:jbake-tags: blog, asciidoc
-:idprefix:
+// :hp-image: /covers/cover.png
+:published_at: 2011-08-16
+:hp-tags: Jboss
+:hp-alt-title: Utiliser une configuration en dehors du JBOSS_HOME
 
 Le but est de décorreler une configuration JBOSS du serveur lui même afin d'avoir cette configuration en gestion de conf.
 
