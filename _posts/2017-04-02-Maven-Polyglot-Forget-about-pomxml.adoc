@@ -1,10 +1,8 @@
 = Maven Polyglot - Forget about pom.xml
-Xavier BOUCLET
-2017-04-02
-:jbake-type: post
-:jbake-status: published
-:jbake-tags: blog, maven, polyglot
-:idprefix:
+// :hp-image: /covers/cover.png
+:published_at: 2017-04-02
+:hp-tags: Maven, Polyglot
+:hp-alt-title: Maven Polyglot - Forget about pom.xml
 
 Fed up of pom xml files when you use Maven? Here is the solution : https://github.com/takari/polyglot-maven[Maven Polyglot].
 Maven Polyglot is out there since over 5 years now and can be used to write pom file in other languages such as :
