@@ -1,10 +1,8 @@
 = Se déconnecter des réseaux sociaux
-Xavier BOUCLET
-2017-04-11
-:jbake-type: post
-:jbake-status: published
-:jbake-tags: blog, asciidoc, social network
-:idprefix:
+// :hp-image: /covers/cover.png
+:published_at: 2017-04-11
+:hp-tags: SocialNetworks, Life
+:hp-alt-title: Se déconnecter des réseaux sociaux
 
 Il y a quelques semaines, suite à la visualisation d'une conférence https://www.youtube.com/watch?v=3E7hkPZ-HTk[TED], j'ai décidé de fortement limiter mon utilisation des réseaux sociaux.
 Je voulais vérifier l'impact que les réseaux sociaux avaient sur ma vie.
