@@ -1,10 +1,8 @@
 = Bilan de 7 années en SSII
-Xavier BOUCLET
-2017-03-22
-:jbake-type: post
-:jbake-status: published
-:jbake-tags: blog, asciidoc
-:idprefix:
+// :hp-image: /covers/cover.png
+:published_at: 2017-03-22
+:hp-tags: SSII,
+:hp-alt-title: Bilan de 7 années en SSII
 
 Récemment, j'ai vu que mes anciens collègues de la SSII S....A (disons SA) se congratulaient d'être présents au super kick-off de
 l'entreprise. Vous savez, le super kick-off ou seuls les managers sont conviés... Je suis, tellement, en décalage avec cette
