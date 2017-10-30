@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Mon, 30 Oct 2017 01:19:30 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[From JBake to Hubpress]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Mon, 30 Oct 2017 01:28:33 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[From JBake to Hubpress]]></title><description><![CDATA[<div class="paragraph">
 <p>Somedays ago I watched a 2015 Devoxx Fr Video about Asciidoc and Hubpress and  I chose to migrate my blog from JBake to Hubpress.</p>
 </div>
 <div class="videoblock">
@@ -8,7 +8,29 @@
 </div>
 <div class="paragraph">
 <p>Already liked Asciidoc but I was not totally satisfied with JBake so I decided to give Hubpress a try. Will tell you about it after some posts.</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/10/29/From-J-Bke-to-Hubpress.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/10/29/From-J-Bke-to-Hubpress.html</guid><category><![CDATA[HubPress]]></category><category><![CDATA[Blog]]></category><category><![CDATA[JBake]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Sun, 29 Oct 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Vaadin 8]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/10/29/From-J-Bke-to-Hubpress.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/10/29/From-J-Bke-to-Hubpress.html</guid><category><![CDATA[HubPress]]></category><category><![CDATA[Blog]]></category><category><![CDATA[JBake]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Sun, 29 Oct 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[How to change the mail subject in outlook 2016]]></title><description><![CDATA[<div class="paragraph">
+<p>For a while now I have been wondering how to best organise my mails.
+Now I have found a tip very useful to me : rewrite the subject of your inbox mails.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the mail</p>
+</li>
+<li>
+<p>Click in subject</p>
+</li>
+<li>
+<p>Type the new subject</p>
+</li>
+<li>
+<p>Save the mail</p>
+</li>
+<li>
+<p>Et voilà</p>
+</li>
+</ol>
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/05/29/How-to-change-the-mail-subject-in-outlook-2016.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/05/29/How-to-change-the-mail-subject-in-outlook-2016.html</guid><category><![CDATA[Outlook]]></category><category><![CDATA[Subject]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Mon, 29 May 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Vaadin 8]]></title><description><![CDATA[<div class="paragraph">
 <p>Last week, I had the chance to attend to the Vaadin talk by @marcushellberg (Marcus Hellberg) hosted by the Montreal Jug.
 I have been so impressed that I am pretty sure I will write my next webapp with Vaadin.
 I decided to give Vaadin a try and get back to Angular if I am not convinced.
