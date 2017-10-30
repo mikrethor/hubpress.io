@@ -1,4 +1,5 @@
 = Vaadin 8
+// :hp-image: /covers/cover.png
 :published_at: 2017-04-18
 :hp-tags: Vaadin, Spring
 :hp-alt-title: Vaadin 8
