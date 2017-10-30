@@ -1,10 +1,8 @@
 = Why I use asciidoc to take my notes
-Xavier BOUCLET
-2017-03-29
-:jbake-type: post
-:jbake-status: published
-:jbake-tags: blog, asciidoc
-:idprefix:
+// :hp-image: /covers/cover.png
+:published_at: 2017-03-29
+:hp-tags: Notes, Asciidoc
+:hp-alt-title: Why I use asciidoc to take my notes
 
 For some time now I have used asciidoc to write all my notes.
 I even use asciidoc to write this blog.
