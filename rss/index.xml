@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Mon, 30 Oct 2017 01:28:49 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[From JBake to Hubpress]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Mon, 30 Oct 2017 01:29:10 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[From JBake to Hubpress]]></title><description><![CDATA[<div class="paragraph">
 <p>Somedays ago I watched a 2015 Devoxx Fr Video about Asciidoc and Hubpress and  I chose to migrate my blog from JBake to Hubpress.</p>
 </div>
 <div class="videoblock">
@@ -214,7 +214,320 @@ Je finis donc par me dire qu&#8217;en plus des réseaux sociaux, je peux supprim
 </div>
 <div class="paragraph">
 <p>Et vous c&#8217;est pour quand ?</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/04/11/Se-deconnecter-des-reseaux-sociaux.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/04/11/Se-deconnecter-des-reseaux-sociaux.html</guid><category><![CDATA[SocialNetworks]]></category><category><![CDATA[Life]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Tue, 11 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Why I use asciidoc to take my notes]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/04/11/Se-deconnecter-des-reseaux-sociaux.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/04/11/Se-deconnecter-des-reseaux-sociaux.html</guid><category><![CDATA[SocialNetworks]]></category><category><![CDATA[Life]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Tue, 11 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Maven Polyglot - Forget about pom.xml]]></title><description><![CDATA[<div class="paragraph">
+<p>Fed up of pom xml files when you use Maven? Here is the solution : <a href="https://github.com/takari/polyglot-maven">Maven Polyglot</a>.
+Maven Polyglot is out there since over 5 years now and can be used to write pom file in other languages such as :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Atom</p>
+</li>
+<li>
+<p>Groovy</p>
+</li>
+<li>
+<p>Clojure</p>
+</li>
+<li>
+<p>Ruby</p>
+</li>
+<li>
+<p>Scala</p>
+</li>
+<li>
+<p>YAML</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To give it a try with an existing project, we have to use the following command line in the project :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn io.takari.polyglot:polyglot-translate-plugin:translate -Dinput=pom.xml -Doutput=pom.{format}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where {format} is the file extension of the target format.
+In my case I tried with YAML format so I replaced {format} with yml.</p>
+</div>
+<div class="paragraph">
+<p>This the pom.xml I tried out :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;groupId&gt;fr.ablx.yml&lt;/groupId&gt;
+    &lt;artifactId&gt;backend&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+
+    &lt;properties&gt;
+        &lt;!-- Project Properties --&gt;
+        &lt;dataBaseSchema&gt;DATABASE&lt;/dataBaseSchema&gt;
+        &lt;!-- Build properties --&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+        &lt;maven.compiler.source&gt;${java.version}&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;${java.version}&lt;/maven.compiler.target&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+
+        &lt;spring.boot.version&gt;1.4.2.RELEASE&lt;/spring.boot.version&gt;
+        &lt;spring.loaded.version&gt;1.2.6.RELEASE&lt;/spring.loaded.version&gt;
+        &lt;lombok.version&gt;1.16.10&lt;/lombok.version&gt;
+        &lt;jsonpath.version&gt;2.2.0&lt;/jsonpath.version&gt;
+        &lt;!-- Report properties --&gt;
+        &lt;maven.site.version&gt;3.4&lt;/maven.site.version&gt;
+        &lt;asciidoctor.version&gt;1.5.3&lt;/asciidoctor.version&gt;
+
+        &lt;debug&gt;true&lt;/debug&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+            &lt;version&gt;${spring.boot.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;version&gt;${spring.boot.version}&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+            &lt;version&gt;${spring.boot.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.jayway.jsonpath&lt;/groupId&gt;
+            &lt;artifactId&gt;json-path&lt;/artifactId&gt;
+            &lt;version&gt;2.2.0&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;version&gt;${lombok.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.hsqldb&lt;/groupId&gt;
+            &lt;artifactId&gt;hsqldb&lt;/artifactId&gt;
+            &lt;version&gt;2.3.4&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;commons-dbcp&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-dbcp&lt;/artifactId&gt;
+            &lt;version&gt;1.4&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/com.google.code.gson/gson --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;
+            &lt;artifactId&gt;gson&lt;/artifactId&gt;
+            &lt;version&gt;2.8.0&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;
+            &lt;version&gt;3.5&lt;/version&gt;
+        &lt;/dependency&gt;
+
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;resources&gt;
+            &lt;resource&gt;
+                &lt;filtering&gt;true&lt;/filtering&gt;
+                &lt;directory&gt;${project.build.sourceDirectory}\..\resources&lt;/directory&gt;
+            &lt;/resource&gt;
+        &lt;/resources&gt;
+        &lt;testResources&gt;
+            &lt;testResource&gt;
+                &lt;filtering&gt;true&lt;/filtering&gt;
+                &lt;directory&gt;${project.build.testSourceDirectory}\..\resources&lt;/directory&gt;
+            &lt;/testResource&gt;
+        &lt;/testResources&gt;
+        &lt;finalName&gt;mysample-web&lt;/finalName&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;${spring.boot.version}&lt;/version&gt;
+                &lt;!-- &lt;configuration&gt; &lt;fork&gt;true&lt;/fork&gt; &lt;jvmArguments&gt; -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
+                    &lt;/jvmArguments&gt; &lt;/configuration&gt; --&gt;
+                &lt;dependencies&gt;
+                    &lt;dependency&gt;
+                        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+                        &lt;artifactId&gt;springloaded&lt;/artifactId&gt;
+                        &lt;version&gt;${spring.loaded.version}&lt;/version&gt;
+                    &lt;/dependency&gt;
+                &lt;/dependencies&gt;
+            &lt;/plugin&gt;
+
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-site-plugin&lt;/artifactId&gt;
+                &lt;version&gt;${maven.site.version}&lt;/version&gt;
+                &lt;dependencies&gt;
+                    &lt;dependency&gt;
+                        &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
+                        &lt;artifactId&gt;asciidoctor-maven-plugin&lt;/artifactId&gt;
+                        &lt;version&gt;1.5.3&lt;/version&gt;
+                    &lt;/dependency&gt;
+                &lt;/dependencies&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+
+    &lt;repositories&gt;
+        &lt;repository&gt;
+            &lt;id&gt;spring-snapshots&lt;/id&gt;
+            &lt;url&gt;http://repo.spring.io/libs-snapshot&lt;/url&gt;
+            &lt;snapshots&gt;
+                &lt;enabled&gt;true&lt;/enabled&gt;
+            &lt;/snapshots&gt;
+        &lt;/repository&gt;
+        &lt;repository&gt;
+            &lt;id&gt;central&lt;/id&gt;
+            &lt;url&gt;https://repo1.maven.org/maven2&lt;/url&gt;
+            &lt;releases&gt;
+                &lt;enabled&gt;true&lt;/enabled&gt;
+            &lt;/releases&gt;
+        &lt;/repository&gt;
+    &lt;/repositories&gt;
+
+    &lt;pluginRepositories&gt;
+        &lt;pluginRepository&gt;
+            &lt;id&gt;spring-snapshots&lt;/id&gt;
+            &lt;url&gt;http://repo.spring.io/libs-snapshot&lt;/url&gt;
+            &lt;snapshots&gt;
+                &lt;enabled&gt;true&lt;/enabled&gt;
+            &lt;/snapshots&gt;
+        &lt;/pluginRepository&gt;
+        &lt;pluginRepository&gt;
+            &lt;id&gt;central&lt;/id&gt;
+            &lt;url&gt;https://repo1.maven.org/maven2&lt;/url&gt;
+            &lt;releases&gt;
+                &lt;enabled&gt;true&lt;/enabled&gt;
+            &lt;/releases&gt;
+        &lt;/pluginRepository&gt;
+    &lt;/pluginRepositories&gt;
+&lt;/project&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the pom.yml file I obtained ;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yml" data-lang="yml">modelVersion: 4.0.0
+groupId: fr.ablx.yml
+artifactId: backend
+version: 0.0.1-SNAPSHOT
+packaging: jar
+properties: {debug: true, asciidoctor.version: 1.5.3, lombok.version: 1.16.10, dataBaseSchema: DATABASE,
+  maven.site.version: 3.4, java.version: 1.8, maven.compiler.target: '${java.version}',
+  spring.loaded.version: 1.2.6.RELEASE, project.build.sourceEncoding: UTF-8, jsonpath.version: 2.2.0,
+  spring.boot.version: 1.4.2.RELEASE, maven.compiler.source: '${java.version}'}
+dependencies:
+- {artifactId: spring-boot-starter-web, groupId: org.springframework.boot, version: '${spring.boot.version}'}
+- {artifactId: spring-boot-starter-test, groupId: org.springframework.boot, scope: test,
+  version: '${spring.boot.version}'}
+- {artifactId: spring-boot-starter-data-jpa, groupId: org.springframework.boot, version: '${spring.boot.version}'}
+- {artifactId: json-path, groupId: com.jayway.jsonpath, scope: test, version: 2.2.0}
+- {artifactId: lombok, groupId: org.projectlombok, version: '${lombok.version}'}
+- {artifactId: hsqldb, groupId: org.hsqldb, version: 2.3.4}
+- {artifactId: commons-dbcp, groupId: commons-dbcp, version: 1.4}
+- {artifactId: gson, groupId: com.google.code.gson, scope: test, version: 2.8.0}
+- {artifactId: commons-lang3, groupId: org.apache.commons, version: 3.5}
+build:
+  finalName: mysample-web
+  plugins:
+  - groupId: org.springframework.boot
+    artifactId: spring-boot-maven-plugin
+    version: ${spring.boot.version}
+    dependencies:
+    - {artifactId: springloaded, groupId: org.springframework, version: '${spring.loaded.version}'}
+  - groupId: org.apache.maven.plugins
+    artifactId: maven-site-plugin
+    version: ${maven.site.version}
+    dependencies:
+    - {artifactId: asciidoctor-maven-plugin, groupId: org.asciidoctor, version: 1.5.3}
+  resources:
+  - {directory: '${project.build.sourceDirectory}\..\resources', filtering: true}
+  testResources:
+  - {directory: '${project.build.testSourceDirectory}\..\resources', filtering: true}
+pluginRepositories:
+- id: spring-snapshots
+  layout: default
+  snapshots: {enabled: true}
+  url: http://repo.spring.io/libs-snapshot
+- id: central
+  layout: default
+  releases: {enabled: true}
+  url: https://repo1.maven.org/maven2
+pomFile: {}
+repositories:
+- id: spring-snapshots
+  layout: default
+  snapshots: {enabled: true}
+  url: http://repo.spring.io/libs-snapshot
+- id: central
+  layout: default
+  releases: {enabled: true}
+  url: https://repo1.maven.org/maven2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can see the pom.xml has been shrinked to a pom.yml with 56 line. A win of 100 lines.
+So big pom files become more readable.
+After the creation of the pom.yml, I had to add the following extensions.xml in my project :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;extensions&gt;
+  &lt;extension&gt;
+    &lt;groupId&gt;io.takari.polyglot&lt;/groupId&gt;
+    &lt;artifactId&gt;polyglot-yaml&lt;/artifactId&gt;
+    &lt;version&gt;0.1.19&lt;/version&gt;
+  &lt;/extension&gt;
+&lt;/extensions&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Yes we can&#8217;t remove XML completely but this file is rather simple and may be one day we will be able to completely get rid of it.
+The extensions.xml has to be placed in the project folder in the folder .mvn.</p>
+</div>
+<div class="paragraph">
+<p>The pom.yml file went fine except for the line pomFile:{}.
+This line broke my build but when I removed it everything went back to normal.</p>
+</div>
+<div class="paragraph">
+<p>Now I am able to use my mvn command as before.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[INFO]
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ backend ---
+[INFO] Building jar: /home/thor/projets/sources/java/backendyml/target/mysample-web.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.960 s
+[INFO] Finished at: 2017-04-02T16:56:33-04:00
+[INFO] Final Memory: 20M/403M
+[INFO] ------------------------------------------------------------------------</pre>
+</div>
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/04/02/Maven-Polyglot-Forget-about-pomxml.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/04/02/Maven-Polyglot-Forget-about-pomxml.html</guid><category><![CDATA[Maven]]></category><category><![CDATA[Polyglot]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Sun, 02 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Why I use asciidoc to take my notes]]></title><description><![CDATA[<div class="paragraph">
 <p>For some time now I have used asciidoc to write all my notes.
 I even use asciidoc to write this blog.</p>
 </div>
