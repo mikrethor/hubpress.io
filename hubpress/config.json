@@ -5,6 +5,22 @@
     "branch": "gh-pages"
   },
   "theme": {
-    "name": "Casper"
+    "name": "casper"
+  },
+  "urls": {
+    "site": "https://mikrethor.github.io/blog",
+    "hubpress": "https://mikrethor.github.io/blog",
+    "theme": "//mikrethor.github.io/blog/themes/casper",
+    "images": "https://mikrethor.github.io/blog/images"
+  },
+  "initialisationConfigComponent": {
+    "name": "initialise-configuration",
+    "computed": {},
+    "methods": {},
+    "staticRenderFns": [
+      null,
+      null,
+      null
+    ]
   }
 }
