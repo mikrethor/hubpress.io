@@ -9,4 +9,4 @@ Somedays ago I watched a 2015 Devoxx Fr Video about Asciidoc and Hubpress and  I
 
 video::kyGJEVEjfAs[youtube]
 
-Already liked Asciidoc but I was not totally satisfied with JBake so I decided to give Hubpress a try. Will tell you about it after some posts.
+I already liked Asciidoc but I was not totally satisfied with JBake so I decided to give Hubpress a try. I will tell you about it after some posts.
