@@ -1,10 +1,8 @@
 = Écouter sa voie intérieure
-Xavier BOUCLET
-2017-03-23
-:jbake-type: post
-:jbake-status: published
-:jbake-tags: blog, asciidoc
-:idprefix:
+// :hp-image: /covers/cover.png
+:published_at: 2017-03-23
+:hp-tags: Inner voice
+:hp-alt-title: Écouter sa voie intérieure
 
 Dans mon post précédent, j'ai parlé du fait qu'en 2014, après 7 ans de SSII, j'avais tout plaqué pour partir à
  l'étranger avec ma femme et mes 2 enfants. Dans celui-ci, je vais parler du déroulement de cette aventure.
