@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Mon, 30 Oct 2017 01:29:10 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[From JBake to Hubpress]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Mon, 30 Oct 2017 01:29:34 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[From JBake to Hubpress]]></title><description><![CDATA[<div class="paragraph">
 <p>Somedays ago I watched a 2015 Devoxx Fr Video about Asciidoc and Hubpress and  I chose to migrate my blog from JBake to Hubpress.</p>
 </div>
 <div class="videoblock">
@@ -577,7 +577,84 @@ Such note was really helpful when you had to work on the problem after him.</p>
 </div>
 <div class="paragraph">
 <p>To properly and easily access my notes I push them in a git repository but I have heard about using asciidoc with Evenote (<a href="https://emmanuelbernard.com/blog/2017/03/28/evernote-and-vim/">asciidoc vim Evernote</a>).</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/03/29/Why-I-use-asciidoc-to-take-my-notes.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/03/29/Why-I-use-asciidoc-to-take-my-notes.html</guid><category><![CDATA[Notes]]></category><category><![CDATA[Asciidoc]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Wed, 29 Mar 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[[MAVEN] settings en ligne de commande]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/03/29/Why-I-use-asciidoc-to-take-my-notes.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/03/29/Why-I-use-asciidoc-to-take-my-notes.html</guid><category><![CDATA[Notes]]></category><category><![CDATA[Asciidoc]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Wed, 29 Mar 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Utiliser des plugins Maven avec des sources en dehors du répertoire src/main/java]]></title><description><![CDATA[<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tout d&#8217;abord, le non respect des conventions limite le choix des plugins utilisables par Maven. Par exemple, je n&#8217;ai pas réussi à faire marcher le plugin PMD. En effet, l&#8217;option sourcepath n&#8217;existe pas sur tous les plugins.</p>
+</div>
+<div class="paragraph">
+<p>C&#8217;est pourquoi, je préconise le respect des conventions mais dans le cas de ce projet, il n'était pas possible de les respecter sans un coût non négligeable sur ce projet.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_javadoc">Javadoc</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;plugin&gt;
+&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+ &lt;artifactId&gt;maven-javadoc-plugin&lt;/artifactId&gt;
+  &lt;version&gt;2.10.3&lt;/version&gt;
+   &lt;configuration&gt;
+    &lt;failOnError&gt;false&lt;/failOnError&gt;
+   &lt;/configuration&gt;
+   &lt;reportSets&gt;
+    &lt;reportSet&gt;
+     &lt;id&gt;html&lt;/id&gt;
+     &lt;configuration&gt;
+      &lt;sourcepath&gt;chemin vers les sources&lt;/sourcepath&gt;
+     &lt;/configuration&gt;
+     &lt;reports&gt;
+      &lt;report&gt;javadoc&lt;/report&gt;
+     &lt;/reports&gt;
+    &lt;/reportSet&gt;
+    &lt;reportSet&gt;
+     &lt;id&gt;test-html&lt;/id&gt;
+     &lt;configuration&gt;
+       &lt;sourcepath&gt;chemin vers les sources de tests&lt;/sourcepath&gt;
+     &lt;/configuration&gt;
+     &lt;reports&gt;
+       &lt;report&gt;test-javadoc&lt;/report&gt;
+     &lt;/reports&gt;
+    &lt;/reportSet&gt;
+   &lt;/reportSets&gt;
+&lt;/plugin&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L&#8217;option "failOnError" permet de ne pas faire échouer la génération de la documentation lorsque les références ne sont pas trouvées. En effet, je n&#8217;ai pas trouvé de moyen d&#8217;ajouter le classpath. Il y avait bien une option qui prend les dépendances mais dans mon cas, j&#8217;ai encore pas mal de librairies qui ne sont pas mavenisées.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_xref">Xref</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;plugin&gt;
+ &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;maven-jxr-plugin&lt;/artifactId&gt;
+   &lt;version&gt;2.5&lt;/version&gt;
+   &lt;reportSets&gt;
+    &lt;reportSet&gt;
+     &lt;id&gt;aggregate&lt;/id&gt;
+     &lt;configuration&gt;
+      &lt;sourcePath&gt;chemin vers les sources&lt;/sourcePath&gt;
+     &lt;/configuration&gt;
+     &lt;reports&gt;
+      &lt;report&gt;aggregate&lt;/report&gt;
+     &lt;/reports&gt;
+    &lt;/reportSet&gt;
+   &lt;/reportSets&gt;
+ &lt;/plugin&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Attention dans le cas de xref, l&#8217;option est sourcePath et non sourcepath.</p>
+</div>
+</div>
+</div>]]></description><link>https://mikrethor.github.io/blog/2015/07/21/Utiliser-des-plugins-Maven-avec-des-sources-en-dehors-du-repertoire.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2015/07/21/Utiliser-des-plugins-Maven-avec-des-sources-en-dehors-du-repertoire.html</guid><category><![CDATA[Maven]]></category><category><![CDATA[Plugin Execution]]></category><category><![CDATA[No convention]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Tue, 21 Jul 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[[MAVEN] settings en ligne de commande]]></title><description><![CDATA[<div class="paragraph">
 <p>Indiquer un settings.xml pour maven en ligne de commande
 Il est possible de surcharger les settings.xml de base pour maven.</p>
 </div>
