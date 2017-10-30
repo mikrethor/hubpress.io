@@ -2,7 +2,8 @@
   "meta": {
     "username": "mikrethor",
     "repositoryName": "blog",
-    "branch": "gh-pages"
+    "branch": "gh-pages",
+    "cname": ""
   },
   "theme": {
     "name": "casper"
@@ -22,5 +23,27 @@
       null,
       null
     ]
+  },
+  "site": {
+    "title": "Xavier's Thoughts",
+    "description": "I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.",
+    "logo": "",
+    "cover": "",
+    "delay": "",
+    "postsPerPage": "",
+    "googleAnalytics": "",
+    "disqus": ""
+  },
+  "socialnetwork": {
+    "email": "",
+    "github": "mikrethor",
+    "twitter": "XavierBOUCLET",
+    "facebook": "",
+    "googleplus": "",
+    "instagram": "",
+    "pinterest": "",
+    "flickr": "",
+    "linkedin": "",
+    "stackoverflow": "xavier-bouclet"
   }
 }
