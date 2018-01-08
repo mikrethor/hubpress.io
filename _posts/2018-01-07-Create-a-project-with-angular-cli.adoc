@@ -45,5 +45,5 @@ ng serve
 Et voilà!
 
 ----
-image::http://github.com/mikrethor/blog/images/2018-01-07-angular-app-cli.png
+image::https://mikrethor.github.io/blog/images/2018-01-07-angular-app-cli.png
 ----
