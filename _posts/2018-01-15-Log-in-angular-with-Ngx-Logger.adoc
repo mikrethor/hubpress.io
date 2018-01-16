@@ -13,3 +13,9 @@ console.log("Stuff to log");
 ----
 
 So, I looked for Log framework in Angular world and I came accross   https://www.npmjs.com/package/ngx-logger[NgxLogger].
+For people coming from Jave, NgxLogger is like Log4j. 
+The mains advantages of NgxLogger are :
+
+- Several log levels
+- Switching log easily
+
