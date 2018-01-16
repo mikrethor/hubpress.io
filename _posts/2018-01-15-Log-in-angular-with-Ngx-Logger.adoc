@@ -70,6 +70,16 @@ export class LoginComponent implements OnInit {
 }
 ----
 
+The level at our disposal are :
+
+- TRACE
+- DEBUG
+- INFO
+- LOG
+- WARN
+- ERROR
+
+
 
 
 
