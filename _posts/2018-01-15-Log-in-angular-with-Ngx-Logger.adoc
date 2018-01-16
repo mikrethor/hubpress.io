@@ -1,0 +1,15 @@
+= Log in angular with NgxLoggerCreate
+// See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
+// :hp-image: /covers/cover.png
+:published_at: 2018-01-15
+:hp-tags: Angular, NgxLogger,
+:hp-alt-title: Log in angular with NgxLogger
+
+Coming from the Java world, I am used to use Log Framework in my projects. I was fed up of using the following.
+
+[source,ts]
+----
+console.log("Stuff to log");
+----
+
+So, I looked for Log framework in Angular world and I came accross   https://www.npmjs.com/package/ngx-logger[NgxLogger].
