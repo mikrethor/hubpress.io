@@ -1,4 +1,4 @@
-= Log in angular with NgxLoggerCreate
+= Log in angular with NgxLogger
 // See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
 // :hp-image: /covers/cover.png
 :published_at: 2018-01-15
