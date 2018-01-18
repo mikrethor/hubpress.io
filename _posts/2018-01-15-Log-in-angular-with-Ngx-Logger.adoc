@@ -1,4 +1,4 @@
-= Log in angular with NgxLoggerCreate
+= Log in angular with NgxLogger
 // See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
 // :hp-image: /covers/cover.png
 :published_at: 2018-01-15
@@ -12,8 +12,8 @@ Coming from the Java world, I am used to use Log Framework in my projects. I was
 console.log("Stuff to log");
 ----
 
-So, I looked for Log framework in Angular world and I came accross   https://www.npmjs.com/package/ngx-logger[NgxLogger].
-For people coming from Jave, NgxLogger is like Log4j. 
+So, I looked for a Log framework in Angular world and I came accross   https://www.npmjs.com/package/ngx-logger[NgxLogger].
+For people coming from Java, NgxLogger is like Log4j. 
 The mains advantages of NgxLogger are :
 
 - Several log levels
@@ -79,6 +79,23 @@ The level at our disposal are :
 - WARN
 - ERROR
 
+It's possible to use OFF to switch off the logging. By modifying the module :
+
+[source,ts]
+----
+level: NgxLoggerLevel.DEBUG
+----
+
+to 
+
+[source,ts]
+----
+level: NgxLoggerLevel.OFF
+----
+
+Et voilà, you are good to go.
+
+Next time, I will show how to send logs to the server side.
 
 
 
