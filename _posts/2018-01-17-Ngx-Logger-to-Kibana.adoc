@@ -99,4 +99,6 @@ imports: [
 
 So far, so good, now we have to use our app for a while and go to Kibana to see the result.
 
-image::http://github.com/mikrethor/blog/images/2018-01-17-Ngxlogger-Kibana[Kibana NgxLogger]
+image::https://github.com/mikrethor/blog/tree/gh-pages/images/2018-01-17-Ngxlogger-Kibana.png[Kibana NgxLogger]
+
+
