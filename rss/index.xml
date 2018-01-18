@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Thu, 18 Jan 2018 03:33:04 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Log in angular with NgxLogger]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Thu, 18 Jan 2018 03:46:59 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Log in angular with NgxLogger]]></title><description><![CDATA[<div class="paragraph">
 <p>Coming from the Java world, I am used to use Log Framework in my projects. I was fed up of using the following.</p>
 </div>
 <div class="listingblock">
@@ -172,7 +172,56 @@ ng serve</code></pre>
 <div class="content">
 <img src="https://mikrethor.github.io/blog/images/2018-01-07-angular-app-cli.png" alt="myproject app">
 </div>
-</div>]]></description><link>https://mikrethor.github.io/blog/2018/01/07/Create-a-project-with-angular-cli.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/01/07/Create-a-project-with-angular-cli.html</guid><category><![CDATA[Angular]]></category><category><![CDATA[Angular/cli]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Sun, 07 Jan 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[From JBake to Hubpress]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2018/01/07/Create-a-project-with-angular-cli.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/01/07/Create-a-project-with-angular-cli.html</guid><category><![CDATA[Angular]]></category><category><![CDATA[Angular/cli]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Sun, 07 Jan 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[Create a project with angular-cli]]></title><description><![CDATA[<div class="paragraph">
+<p>Angular/cli can be used to create an angular project with the latest module versions.
+In the first place, we have to install angular/cli.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">npm install -g @angular/cli</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case angular/cli is already installed, it can be updated using the following command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">npm install -g @angular/cli@latest</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case npm is not globally installed use this command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">npm i -g npm</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To create the project use ng new.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">ng new myproject</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In order to launch the project, we have to use the ng serve command inside the myproject folder.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">cd myproject
+ng serve</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Et voilà!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>image::http://github.com/mikrethor/blog/images/2018-01-07-angular-app-cli.png</pre>
+</div>
+</div>]]></description><link>https://mikrethor.github.io/blog/2018/01/07/Create-Angular.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/01/07/Create-Angular.html</guid><category><![CDATA[Angular]]></category><category><![CDATA[Angular/cli]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Sun, 07 Jan 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[From JBake to Hubpress]]></title><description><![CDATA[<div class="paragraph">
 <p>Somedays ago I watched a 2015 Devoxx Fr Video about Asciidoc and Hubpress and  I chose to migrate my blog from JBake to Hubpress.</p>
 </div>
 <div class="videoblock">
