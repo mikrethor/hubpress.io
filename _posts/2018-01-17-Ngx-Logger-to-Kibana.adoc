@@ -5,7 +5,7 @@
 :hp-tags: Angular, NgxLogger, Elasticsearch, Kibana
 :hp-alt-title: NgxLogger to Kibana
 
-My last link:2018-01-15-Log-in-angular-with-Ngx-Logger.html[post] was about NgxLogger and its logging capabilities.
+My last link:../15/Log-in-angular-with-Ngx-Logger.html[post] was about NgxLogger and its logging capabilities.
 One of the reason I chose NgxLogger was that I liked the possibility to send my
 logs through a url in a Json format. This post is about my experiment with Ngxlogger, Elasticsearch and Kibana.
 
