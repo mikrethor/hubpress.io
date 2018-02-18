@@ -1,0 +1,9 @@
+= Being a tech lead
+Xavier BOUCLET
+2018-02-18
+:jbake-type: post
+:jbake-status: published
+:jbake-tags: blog, tech lead
+:idprefix:
+
+
