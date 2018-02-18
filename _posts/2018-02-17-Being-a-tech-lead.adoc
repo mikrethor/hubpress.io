@@ -68,14 +68,14 @@ The balance is sometimes hard to achieve. But when you move away from this repar
 
 On my current project, I was too much in the code and it prevented me to see some member problem soon enough.
 
-= Coding
+== Coding
 
 A Tech Lead who doesn't code can't be a Teach Lead because he won't identify what the team is going through.
 I mean a Tech Lead has to understand the team context and improve this context to facilitate the team work.
 
 Usually, it represents 30% of my time.
 
-= Motivating the team
+== Motivating the team
 
 Motivating the team means helping the team to be motivated.
 It means :
@@ -85,14 +85,14 @@ It means :
 
 It takes approximately 30% of my time.
 
-= Supporting / organizing the team
+== Supporting / organizing the team
 
 Supporting and organizing the team is the same in this case because the goal is to encourage team members to discuss among themselves.
 It helps improving knowledge and collaboration.
 
 It also takes approximately 30% of my time.
 
-= Innovation
+== Innovation
 
 Innovation could seem irrelevant but it's a part of team motivation because without innovation the team will
  loose motivation to improve things and innovation is a way to improve development time and quality.
