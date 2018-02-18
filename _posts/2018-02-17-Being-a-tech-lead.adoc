@@ -42,7 +42,7 @@ Especially when deploying the webapp locally takes a few minutes but it seems th
 
 So we had to change some team members. In fact, I don't know if we can speak about team member in such case because they didn't really followed the team guidelines.
 
-In such conditions, we managed succeed the first webapp delivery to production with an acceptable quality.
+In such conditions, we managed to succeed the first webapp delivery to production with an acceptable quality.
 
 My job has become a lot easier since then.
 I have focused on improving team efficiency and some team member have taken good habits.
@@ -73,7 +73,7 @@ On my current project, I was too much in the code and it prevented me to see som
 A Tech Lead who doesn't code can't be a Teach Lead because he won't identify what the team is going through.
 I mean a Tech Lead has to understand the team context and improve this context to facilitate the team work.
 
-Usually, It represents 30% of my time.
+Usually, it represents 30% of my time.
 
 = Motivating the team
 
