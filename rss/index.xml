@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Fri, 23 Feb 2018 01:55:16 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Being a tech lead]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Thu, 26 Apr 2018 04:28:52 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Being a tech lead]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Almost one year ago, my client needed a Tech Lead in one of it&#8217;s development team.
@@ -154,7 +154,7 @@ It helps improving knowledge and collaboration.</p>
 </div>
 </div>
 </div>
-<h1 id="on_last_thing" class="sect0">On last thing</h1>
+<h1 id="one_last_thing" class="sect0">One last thing</h1>
 <div class="paragraph">
 <p>A take lead can&#8217;t do his job properly, without having a team ready to listen. My job on this project would have been a
  lot harder if no one had listen and started to embrace the change.</p>
