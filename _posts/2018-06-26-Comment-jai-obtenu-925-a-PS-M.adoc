@@ -5,7 +5,11 @@
 // :hp-tags: HubPress, Blog, Open_Source,
 // :hp-alt-title: My English Title
 
+== Mon objectif
+
 Depuis quelques temps déjà, mon positionnement en tant que Tech Lead et mon expérience en gestion de projets font que je suis généralement choisi pour remplacer le Scrum Master de l’équipe lors de congés ou de fin de projets. Il s’agit pourtant d’un rôle à part entière qui ne s’improvise pas. C’est pourquoi, j’ai choisi de passer la certification de Professional Scrum Master 1 (PSM1). Le but était de pouvoir aider l’équipe au mieux dans ce rôle. Dans ce post, je vais vous faire partager la méthode que j’ai employée pour passer cette certification.
+
+
 
 La certification PSM1 permet de comprendre les tenants et aboutissants du rôle de Scrum Master et plus généralement des avantages à utiliser la méthode Scrum. Loin d’être suffisante pour bien comprendre le rôle de Scrum Master, elle est un point d’entrée.
 
