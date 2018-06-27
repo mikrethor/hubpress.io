@@ -1,4 +1,4 @@
-= Comment j'ai obtenu 92,5% à PSM1
+= Comment j'ai passé la certification  PSM1
 // See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
 // :hp-image: /covers/cover.png
 // :published_at: 2019-01-31
