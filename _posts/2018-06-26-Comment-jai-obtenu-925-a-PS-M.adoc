@@ -15,11 +15,11 @@ Pour ceux qui comme moi ont tendance à procrastiner, je conseille d’acheter l
 
 Ma préparation a consisté à lire le guide scrum en anglais une à deux fois par jour afin de bien incorporer les différentes notions. Le guide scrum est disponible en français mais j’ai choisi de le lire uniquement en anglais pour bien me familiariser aux termes en anglais. Pour ceux qui ont plus de mal en anglais, je conseille de le lire dans leur langue maternelle mais de très rapidement se familiariser avec la version anglaise. Pour monitoire ma progression et déterminer si j’étais prêt, j’ai utilisé les tests gratuits suivants :
 
-- Scrum Open (scrum.org)
-- Nexus Open (scrum.org)
-- Product Owner Open (scrum.org)
-- Le site Mikhail Lapshin (http://mlapshin.com/index.php/scrum-quizzes/)
-- Practice Assessment (https://www.thescrummaster.co.uk/professional-scrum-master-i-psm-i-practice-assessment)
+- https://www.scrum.org/open-assessments/scrum-open[Scrum Open]
+- https://www.scrum.org/open-assessments/nexus-open[Nexus Open]
+- https://www.scrum.org/open-assessments/product-owner-open[Product Owner Open]
+- http://mlapshin.com/index.php/scrum-quizzes/[Le site Mikhail Lapshin]
+- https://www.thescrummaster.co.uk/professional-scrum-master-i-psm-i-practice-assessment[Practice Assessment]
 
 En plus des tests et du guide scrum, je conseille de lire le glossaire scrum et de passer 2-3h sur différents sujets du forum scrum.org.
 
