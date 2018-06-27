@@ -17,7 +17,7 @@ Lors du passage de la certification PSM1, il faut répondre correctement à un m
 
 == Préparation
 
-Pour ceux qui comme moi ont tendance à procrastiner, je conseille d’acheter l’évaluation et de se mettre un objectif de révision de 2 semaines maximum. Avec mon expérience de plusieurs projets Scrum je ne voulais pas investir dans des cours dont le coût peut dépasser les 1000 CAD et plus. J’ai personnellement choisi  scrum.org. Il est aussi possible de le faire  au travers de scrumalliance.org mais le coût et la méthode différent entre les 2 sites. Sur scrum.org, il s’agit de 150 USD par tentative de passage et il est possible de le faire en ligne.
+Pour ceux qui comme moi ont tendance à procrastiner, je conseille d’acheter l’évaluation et de se mettre un objectif de révision de 2 semaines maximum. Avec mon expérience de plusieurs projets Scrum je ne voulais pas investir dans des cours dont le coût peut dépasser les 1000 CAD et plus. J’ai personnellement choisi  scrum.org. Il est aussi possible de le faire  au travers de scrumalliance.org mais le coût et la méthode diffèrent entre les 2 sites. Sur scrum.org, il s’agit de 150 USD par tentative de passage et il est possible de le faire en ligne.
 
 Ma préparation a consisté à lire le guide scrum en anglais une à deux fois par jour afin de bien incorporer les différentes notions. Le guide scrum est disponible en français mais j’ai choisi de le lire uniquement en anglais pour bien me familiariser aux termes en anglais. Pour ceux qui ont plus de mal en anglais, je conseille de le lire dans leur langue maternelle mais de très rapidement se familiariser avec la version anglaise. Pour monitoire ma progression et déterminer si j’étais prêt, j’ai utilisé les tests gratuits suivants :
 
