@@ -31,7 +31,11 @@ En plus des tests et du guide scrum, je conseille de lire le https://www.scrum.o
 
 Les tests open de scrum.org sont utiles comme point d’entrée pour bien comprendre et certaines questions sont dans la certification. Il est donc utile de les pratiquer et d’avoir un temps final dans les 5 minutes sur chaque open plusieurs fois à la suite pour avoir toutes les questions possibles.
 
-Les tests les plus intéressants pour moi furent les 2 derniers. Ils totalisent à eux 2 une centaine de question. Il faut donc s’assurer d’obtenir 100% à chacun de ses tests plusieurs fois à la suite. Le site de Mikhail Lapsin est le plus intéressant car il offre une possibilité de passer le tests en mode apprentissage ce qui permet d’avoir une explication de chaque réponse et donc de mieux cerner le guide scrum. Il est possible d'aller plus loin dans les tests en allant sur des sites payants mais je n'ai pas eu à les utiliser.
+Les tests les plus intéressants pour moi furent les 2 derniers. Ils totalisent à eux 2 une centaine de question. Il faut donc s’assurer d’obtenir 100% à chacun de ses tests plusieurs fois à la suite. Le site de Mikhail Lapsin est le plus intéressant car il offre une possibilité de passer le tests en mode apprentissage ce qui permet d’avoir une explication de chaque réponse et donc de mieux cerner le guide scrum.
+
+image::https://mikrethor.github.io/blog/images/2018-06-26-mikhail-learning-mode.png[Mikhail Lapsin Learning Mode]
+
+Il est possible d'aller plus loin dans les tests en allant sur des sites payants mais je n'ai pas eu à les utiliser.
 
 == Le passage
 
