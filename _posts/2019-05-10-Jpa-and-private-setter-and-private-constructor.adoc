@@ -1,0 +1,31 @@
+= Jpa and private setter and private constructor
+// See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
+// :hp-image: /covers/cover.png
+// :published_at: 2019-05-09
+// :hp-tags: JPA, Setter, OO,
+// :hp-alt-title: Jpa and private setter and private constructor
+
+Today, with my colleagues, I talked about Oriented Programming and why we shouldn't always generate all the getters and setters when we design a class.
+And someone told me that JPA forces us to declare setters and getters in an entity class. Does it?
+
+== What is the JPA requirements for an entity class
+
+=== No setter ?
+
+When an entity class doesn't contain a setter for a field, JPA will raise the following error :
+
+....
+org.hibernate.PropertyNotFoundException: Could not locate setter method for property 
+....
+
+=== No constructor ?
+
+When an entity class doesn't contain an empty constructor for a field, JPA will raise the following error :
+
+....
+org.hibernate.InstantiationException: No default constructor for entity: 
+....
+
+
+
+
