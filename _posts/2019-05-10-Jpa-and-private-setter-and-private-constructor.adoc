@@ -1,7 +1,7 @@
 = Jpa and private setter and private constructor
 // See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
 // :hp-image: /covers/cover.png
-// :published_at: 2019-05-09
+// :published_at: 2019-05-10
 // :hp-tags: JPA, Setter, OO,
 // :hp-alt-title: Jpa and private setter and private constructor
 
@@ -71,5 +71,5 @@ public class Person {
 
 This entity is a valid JPA entity and it can't be modified after its creation.
 
-You can  use the following github project to try by ourself.
+You can use the following github project to try by ourself.
 https://github.com/mikrethor/jpa-private[JpaPrivate @ *GitHub*]
