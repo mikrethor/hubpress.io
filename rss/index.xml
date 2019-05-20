@@ -1,94 +1,83 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Sat, 11 May 2019 02:15:44 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Jpa and private setter and private constructor]]></title><description><![CDATA[<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>Today, with my colleagues, I talked about Oriented Programming and why we shouldn&#8217;t always generate all the getters and setters when we design a class (<a href="https://www.javaworld.com/article/2073723/why-getter-and-setter-methods-are-evil.html">Why getter and setter methods are evil?</a>).
-And someone told me that JPA forces us to declare setters and getters in an entity class. Does it?</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_is_the_jpa_requirements_for_an_entity_class">What is the JPA requirements for an entity class</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_no_setter">No setter ?</h3>
-<div class="paragraph">
-<p>When an entity class doesn&#8217;t contain a setter for a field, JPA will raise the following error :</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>org.hibernate.PropertyNotFoundException: Could not locate setter method for property</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_no_constructor">No constructor ?</h3>
-<div class="paragraph">
-<p>When an entity class doesn&#8217;t contain a constructor without parameters, JPA will raise the following error :</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>org.hibernate.InstantiationException: No default constructor for entity:</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_conclusion">Conclusion</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>JPA needs a constructor and setter for each declared field. Does it mean we have to expose the default constructor and each setter ?</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Mon, 20 May 2019 02:28:50 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Postgres Embeded]]></title><description><![CDATA[<div class="paragraph">
+<p>When I develop locally on my laptop, I usually use H2 database to test the layer between my code and the database. But sometimes it&#8217;s not enough&#8230;&#8203;</p>
 </div>
 <div class="paragraph">
-<p>It doesn&#8217;t&#8230;&#8203;</p>
+<p>Indeed some specific database types are useful in production but unuseable in development because H2 doesn&#8217;t have them or they have another definition.</p>
 </div>
 <div class="paragraph">
-<p>JPA supports private constructor and private setters.</p>
+<p>With postgres we have an alternative, we can use <a href="https://github.com/yandex-qatools/postgresql-embedded">postgresql-embedded</a> in order to use postgresql locally.</p>
+</div>
+<div class="paragraph">
+<p>In order to use it, we need to add the following dependency to our project. In my case I use maven :</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@Entity
-public class Person {
-  private long id;
-  private String name;
-
-  public Person(long id, String name) {
-    this.id = id;
-    this.name = name;
-  }
-
-  private Person() {
-  }
-
-  @Id
-  public long getId() {
-    return id;
-  }
-
-  private void setId(long id) {
-    this.id = id;
-  }
-
-  @Column
-  public String getName() {
-    return name;
-  }
-
-  private void setName(String name) {
-    this.name = name;
-  }
-}</code></pre>
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;ru.yandex.qatools.embed&lt;/groupId&gt;
+    &lt;artifactId&gt;postgresql-embedded&lt;/artifactId&gt;
+    &lt;version&gt;2.10&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This entity is a valid JPA entity and it can&#8217;t be modified after its creation.</p>
+<p>And we can create some beans in a spring boot project in order to launch the database at startup.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">@Bean
+@Throws(IOException::class)
+fun postgresConfig(): PostgresConfig {
+     val postgresConfig = PostgresConfig(Version.V11_1,
+            AbstractPostgresConfig.Net(host, port!!),
+            AbstractPostgresConfig.Storage(database),
+            AbstractPostgresConfig.Timeout(),
+            AbstractPostgresConfig.Credentials(username, password)
+     )
+postgresConfig.additionalInitDbParams.addAll(DEFAULT_ADDITIONAL_INIT_DB_PARAMS)
+
+   return postgresConfig
+}
+
+@Bean(destroyMethod = "stop")
+@Throws(IOException::class)
+fun postgresProcess(config: PostgresConfig): PostgresProcess {
+        val runtime = PostgresStarter.getDefaultInstance()
+        val exec = runtime.prepare(config)
+        val postgres = exec.start()
+        return postgres
+    }</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>You can use the following github project to try by ourself.
-<a href="https://github.com/mikrethor/jpa-private">JpaPrivate @ <strong>GitHub</strong></a></p>
+<p>The postgresConfig bean allows us to define all the database information :
+* host
+* port
+* user
+* password</p>
+</div>
+<div class="paragraph">
+<p>The postgresProcess bean launch database.</p>
+</div>
+<div class="paragraph">
+<p>The first time the database is launched, the database binary is downloaded and installed on your computer.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Download Version{11.1-1}:OS_X:B64 START
+Download Version{11.1-1}:OS_X:B64 DownloadSize: 242187339
+Download Version{11.1-1}:OS_X:B64 0% 1% 2% 3% 4% 5% 6% 7% 8% 9% 10% 11% 12% 13% 14% 15% 16% 17% 18% 19% 20% 21% 22% 23% 24% 25% 26% 27% 28% 29% 30% 31% 32% 33% 34% 35% 36% 37% 38% 39% 40% 41% 42% 43% 44% 45% 46% 47% 48% 49% 50% 51% 52% 53% 54% 55% 56% 57% 58% 59% 60% 61% 62% 63% 64% 65% 66% 67% 68% 69% 70% 71% 72% 73% 74% 75% 76% 77% 78% 79% 80% 81% 82% 83% 84% 85% 86% 87% 88% 89% 90% 91% 92% 93% 94% 95% 96% 97% 98% 99% 100% Download Version{11.1-1}:OS_X:B64 downloaded with 1131kb/s
+Download Version{11.1-1}:OS_X:B64 DONE
+Extract /Users/user666/.embedpostgresql/postgresql-11.1-1-osx-binaries.zip START
+..................................................................................................................................................................................................................................................................................................................
+Extract /Users/user666/.embedpostgresql/postgresql-11.1-1-osx-binaries.zip DONE</pre>
 </div>
 </div>
-</div>]]></description><link>https://mikrethor.github.io/blog/2019/05/10/Jpa-and-private-setter-and-private-constructor.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2019/05/10/Jpa-and-private-setter-and-private-constructor.html</guid><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Fri, 10 May 2019 00:00:00 GMT</pubDate></item><item><title><![CDATA[Comment j'ai passé la certification  PSM1]]></title><description><![CDATA[<div class="sect1">
+<div class="paragraph">
+<p>After this first download, the database is just extracted and executed each time our app is executed.</p>
+</div>
+<div class="paragraph">
+<p>For more info, you can watch this <a href="https://github.com/mikrethor/customer-r2dbc">github repo</a>.</p>
+</div>]]></description><link>https://mikrethor.github.io/blog/2019/05/19/Postgres-Embeded.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2019/05/19/Postgres-Embeded.html</guid><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Sun, 19 May 2019 00:00:00 GMT</pubDate></item><item><title><![CDATA[Comment j'ai passé la certification  PSM1]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_mon_objectif">Mon objectif</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -338,7 +327,7 @@ It helps improving knowledge and collaboration.</p>
 </div>
 <div class="paragraph">
 <p><a href="https://www.thekua.com/atwork/2014/11/the-definition-of-a-tech-lead/">Reference1</a></p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2018/02/17/Being-a-tech-lead.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/02/17/Being-a-tech-lead.html</guid><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Sat, 17 Feb 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[NgxLogger to Kibana]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2018/02/17/Being-a-tech-lead.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/02/17/Being-a-tech-lead.html</guid><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Sat, 17 Feb 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[NgxLogger to Kibana]]></title><description><![CDATA[<div class="paragraph">
 <p>My last <a href="../15/Log-in-angular-with-Ngx-Logger.html">post</a> was about NgxLogger and its logging capabilities.
 One of the reason I chose NgxLogger was that I liked the possibility to send my
 logs through a url in a Json format. This post is about my experiment with Ngxlogger, Elasticsearch and Kibana.</p>
@@ -486,7 +475,7 @@ logs through a url in a Json format. This post is about my experiment with Ngxlo
 <div class="content">
 <img src="https://mikrethor.github.io/blog/images/2018-01-17-Ngxlogger-Kibana.png" alt="Kibana NgxLogger">
 </div>
-</div>]]></description><link>https://mikrethor.github.io/blog/2018/01/17/Ngx-Logger-to-Kibana.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/01/17/Ngx-Logger-to-Kibana.html</guid><category><![CDATA[Angular]]></category><category><![CDATA[NgxLogger]]></category><category><![CDATA[Elasticsearch]]></category><category><![CDATA[Kibana]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Wed, 17 Jan 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[Log in angular with NgxLogger]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2018/01/17/Ngx-Logger-to-Kibana.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/01/17/Ngx-Logger-to-Kibana.html</guid><category><![CDATA[Angular]]></category><category><![CDATA[NgxLogger]]></category><category><![CDATA[Elasticsearch]]></category><category><![CDATA[Kibana]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Wed, 17 Jan 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[Log in angular with NgxLogger]]></title><description><![CDATA[<div class="paragraph">
 <p>Coming from the Java world, I am used to use Log Framework in my projects. I was fed up of using the following.</p>
 </div>
 <div class="listingblock">
@@ -611,7 +600,7 @@ export class LoginComponent implements OnInit {
 </div>
 <div class="paragraph">
 <p>Next time, I will show how to send logs to the server side.</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2018/01/15/Log-in-angular-with-Ngx-Logger.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/01/15/Log-in-angular-with-Ngx-Logger.html</guid><category><![CDATA[Angular]]></category><category><![CDATA[NgxLogger]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Mon, 15 Jan 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[Create a project with angular-cli]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2018/01/15/Log-in-angular-with-Ngx-Logger.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/01/15/Log-in-angular-with-Ngx-Logger.html</guid><category><![CDATA[Angular]]></category><category><![CDATA[NgxLogger]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Mon, 15 Jan 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[Create a project with angular-cli]]></title><description><![CDATA[<div class="paragraph">
 <p>Angular/cli can be used to create an angular project with the latest module versions.
 In the first place, we have to install angular/cli.</p>
 </div>
@@ -660,7 +649,7 @@ ng serve</code></pre>
 <div class="content">
 <img src="https://mikrethor.github.io/blog/images/2018-01-07-angular-app-cli.png" alt="myproject app">
 </div>
-</div>]]></description><link>https://mikrethor.github.io/blog/2018/01/07/Create-a-project-with-angular-cli.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/01/07/Create-a-project-with-angular-cli.html</guid><category><![CDATA[Angular]]></category><category><![CDATA[Angular/cli]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Sun, 07 Jan 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[From JBake to Hubpress]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2018/01/07/Create-a-project-with-angular-cli.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/01/07/Create-a-project-with-angular-cli.html</guid><category><![CDATA[Angular]]></category><category><![CDATA[Angular/cli]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Sun, 07 Jan 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[From JBake to Hubpress]]></title><description><![CDATA[<div class="paragraph">
 <p>Somedays ago I watched a 2015 Devoxx Fr Video about Asciidoc and Hubpress and  I chose to migrate my blog from JBake to Hubpress.</p>
 </div>
 <div class="videoblock">
@@ -670,7 +659,7 @@ ng serve</code></pre>
 </div>
 <div class="paragraph">
 <p>I already liked Asciidoc but I was not totally satisfied with JBake so I decided to give Hubpress a try. I will tell you about it after some posts.</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/10/29/From-J-Bke-to-Hubpress.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/10/29/From-J-Bke-to-Hubpress.html</guid><category><![CDATA[HubPress]]></category><category><![CDATA[Blog]]></category><category><![CDATA[JBake]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Sun, 29 Oct 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Lost your OSMC password ? Reset it]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/10/29/From-J-Bke-to-Hubpress.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/10/29/From-J-Bke-to-Hubpress.html</guid><category><![CDATA[HubPress]]></category><category><![CDATA[Blog]]></category><category><![CDATA[JBake]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Sun, 29 Oct 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Lost your OSMC password ? Reset it]]></title><description><![CDATA[<div class="paragraph">
 <p>A few weeks ago, I decided to change the default osmc password to something more secure.
 Of course I managed to forget this secured password.
 Fortunately for me there is a way to reset it without damaging anything.</p>
@@ -708,7 +697,7 @@ Fortunately for me there is a way to reset it without damaging anything.</p>
 </div>
 <div class="paragraph">
 <p>Have fun.</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/05/29/Lost-your-OSMC-password-Reset-it.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/05/29/Lost-your-OSMC-password-Reset-it.html</guid><category><![CDATA[Osmc]]></category><category><![CDATA[Password]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Mon, 29 May 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[How to change the mail subject in outlook 2016]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/05/29/Lost-your-OSMC-password-Reset-it.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/05/29/Lost-your-OSMC-password-Reset-it.html</guid><category><![CDATA[Osmc]]></category><category><![CDATA[Password]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Mon, 29 May 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[How to change the mail subject in outlook 2016]]></title><description><![CDATA[<div class="paragraph">
 <p>For a while now I have been wondering how to best organise my mails.
 Now I have found a tip very useful to me : rewrite the subject of your inbox mails.</p>
 </div>
@@ -730,7 +719,7 @@ Now I have found a tip very useful to me : rewrite the subject of your inbox mai
 <p>Et voilà</p>
 </li>
 </ol>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/05/29/How-to-change-the-mail-subject-in-outlook-2016.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/05/29/How-to-change-the-mail-subject-in-outlook-2016.html</guid><category><![CDATA[Outlook]]></category><category><![CDATA[Subject]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Mon, 29 May 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Vaadin 8]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/05/29/How-to-change-the-mail-subject-in-outlook-2016.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/05/29/How-to-change-the-mail-subject-in-outlook-2016.html</guid><category><![CDATA[Outlook]]></category><category><![CDATA[Subject]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Mon, 29 May 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Vaadin 8]]></title><description><![CDATA[<div class="paragraph">
 <p>Last week, I had the chance to attend to the Vaadin talk by @marcushellberg (Marcus Hellberg) hosted by the Montreal Jug.
 I have been so impressed that I am pretty sure I will write my next webapp with Vaadin.
 I decided to give Vaadin a try and get back to Angular if I am not convinced.
@@ -772,7 +761,7 @@ This is mostly the same presentation I saw at Montreal Jug.</p>
 <div class="paragraph">
 <p>I was able to develop the note app in a bit more of time than Marcus but I did it in less than an hour.
 From this starting point, I am learning through the Vaadin <a href="https://vaadin.com/docs/">documentation</a></p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/04/18/Vaadin-8.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/04/18/Vaadin-8.html</guid><category><![CDATA[Vaadin]]></category><category><![CDATA[Spring]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Tue, 18 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Se déconnecter des réseaux sociaux]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/04/18/Vaadin-8.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/04/18/Vaadin-8.html</guid><category><![CDATA[Vaadin]]></category><category><![CDATA[Spring]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Tue, 18 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Se déconnecter des réseaux sociaux]]></title><description><![CDATA[<div class="paragraph">
 <p>Il y a quelques semaines, suite à la visualisation d&#8217;une conférence <a href="https://www.youtube.com/watch?v=3E7hkPZ-HTk">TED</a>, j&#8217;ai décidé de fortement limiter mon utilisation des réseaux sociaux.
 Je voulais vérifier l&#8217;impact que les réseaux sociaux avaient sur ma vie.</p>
 </div>
@@ -876,7 +865,7 @@ Je finis donc par me dire qu&#8217;en plus des réseaux sociaux, je peux supprim
 </div>
 <div class="paragraph">
 <p>Et vous c&#8217;est pour quand ?</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/04/11/Se-deconnecter-des-reseaux-sociaux.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/04/11/Se-deconnecter-des-reseaux-sociaux.html</guid><category><![CDATA[SocialNetworks]]></category><category><![CDATA[Life]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Tue, 11 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Maven Polyglot - Forget about pom.xml]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/04/11/Se-deconnecter-des-reseaux-sociaux.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/04/11/Se-deconnecter-des-reseaux-sociaux.html</guid><category><![CDATA[SocialNetworks]]></category><category><![CDATA[Life]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Tue, 11 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Maven Polyglot - Forget about pom.xml]]></title><description><![CDATA[<div class="paragraph">
 <p>Fed up of pom xml files when you use Maven? Here is the solution : <a href="https://github.com/takari/polyglot-maven">Maven Polyglot</a>.
 Maven Polyglot is out there since over 5 years now and can be used to write pom file in other languages such as :</p>
 </div>
@@ -1189,7 +1178,7 @@ This line broke my build but when I removed it everything went back to normal.</
 [INFO] Final Memory: 20M/403M
 [INFO] ------------------------------------------------------------------------</pre>
 </div>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/04/02/Maven-Polyglot-Forget-about-pomxml.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/04/02/Maven-Polyglot-Forget-about-pomxml.html</guid><category><![CDATA[Maven]]></category><category><![CDATA[Polyglot]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Sun, 02 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Why I use asciidoc to take my notes]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/04/02/Maven-Polyglot-Forget-about-pomxml.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/04/02/Maven-Polyglot-Forget-about-pomxml.html</guid><category><![CDATA[Maven]]></category><category><![CDATA[Polyglot]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Sun, 02 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Why I use asciidoc to take my notes]]></title><description><![CDATA[<div class="paragraph">
 <p>For some time now I have used asciidoc to write all my notes.
 I even use asciidoc to write this blog.</p>
 </div>
@@ -1239,7 +1228,7 @@ Such note was really helpful when you had to work on the problem after him.</p>
 </div>
 <div class="paragraph">
 <p>To properly and easily access my notes I push them in a git repository but I have heard about using asciidoc with Evenote (<a href="https://emmanuelbernard.com/blog/2017/03/28/evernote-and-vim/">asciidoc vim Evernote</a>).</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/03/29/Why-I-use-asciidoc-to-take-my-notes.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/03/29/Why-I-use-asciidoc-to-take-my-notes.html</guid><category><![CDATA[Notes]]></category><category><![CDATA[Asciidoc]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Wed, 29 Mar 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Écouter sa voie intérieure]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/03/29/Why-I-use-asciidoc-to-take-my-notes.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/03/29/Why-I-use-asciidoc-to-take-my-notes.html</guid><category><![CDATA[Notes]]></category><category><![CDATA[Asciidoc]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Wed, 29 Mar 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Écouter sa voie intérieure]]></title><description><![CDATA[<div class="paragraph">
 <p>Dans mon post précédent, j&#8217;ai parlé du fait qu&#8217;en 2014, après 7 ans de SSII, j&#8217;avais tout plaqué pour partir à
  l'étranger avec ma femme et mes 2 enfants. Dans celui-ci, je vais parler du déroulement de cette aventure.</p>
 </div>
@@ -1301,7 +1290,7 @@ D&#8217;une part mon jeune fils d&#8217;un an n&#8217;avait pas de nacelle ce qu
 <p>Malgré tout, après quelques jours pour se remettre, le kiff commence. Nous tombons tous les 4 en amour de Montréal.
  Et je peux dire, que 3 ans et 3 hivers plus tard c&#8217;est toujours le fun. Bref suite à toutes nos aventures, si j&#8217;ai un conseil.
  C&#8217;est de ne pas hésiter à faire un changement radical dans sa vie lorsque notre voix intérieure nous dit ras le bol de tout ça.</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/03/23/Ecouter-sa-voie-interieure.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/03/23/Ecouter-sa-voie-interieure.html</guid><category><![CDATA[Inner voice]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Thu, 23 Mar 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Bilan de 7 années en SSII]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/03/23/Ecouter-sa-voie-interieure.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/03/23/Ecouter-sa-voie-interieure.html</guid><category><![CDATA[Inner voice]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Thu, 23 Mar 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Bilan de 7 années en SSII]]></title><description><![CDATA[<div class="paragraph">
 <p>Récemment, j&#8217;ai vu que mes anciens collègues de la SSII S&#8230;&#8203;.A (disons SA) se congratulaient d'être présents au super kick-off de
 l&#8217;entreprise. Vous savez, le super kick-off ou seuls les managers sont conviés&#8230;&#8203; Je suis, tellement, en décalage avec cette
 vision, que je pense que le moment est venu pour moi de faire le point sur ma vie en SSII.</p>
@@ -1398,7 +1387,7 @@ Bref prenez en main votre carrière et votre vie sans la laisser aux mains d&#82
 </div>
 <div class="paragraph">
 <p>Signé un dév</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2017/03/22/Bilan-de-7-annees-en-SSII.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/03/22/Bilan-de-7-annees-en-SSII.html</guid><category><![CDATA[SSII]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Wed, 22 Mar 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Utiliser des plugins Maven avec des sources en dehors du répertoire src/main/java]]></title><description><![CDATA[<div id="preamble">
+</div>]]></description><link>https://mikrethor.github.io/blog/2017/03/22/Bilan-de-7-annees-en-SSII.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2017/03/22/Bilan-de-7-annees-en-SSII.html</guid><category><![CDATA[SSII]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Wed, 22 Mar 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Utiliser des plugins Maven avec des sources en dehors du répertoire src/main/java]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Tout d&#8217;abord, le non respect des conventions limite le choix des plugins utilisables par Maven. Par exemple, je n&#8217;ai pas réussi à faire marcher le plugin PMD. En effet, l&#8217;option sourcepath n&#8217;existe pas sur tous les plugins.</p>
@@ -1475,14 +1464,14 @@ Bref prenez en main votre carrière et votre vie sans la laisser aux mains d&#82
 <p>Attention dans le cas de xref, l&#8217;option est sourcePath et non sourcepath.</p>
 </div>
 </div>
-</div>]]></description><link>https://mikrethor.github.io/blog/2015/07/21/Utiliser-des-plugins-Maven-avec-des-sources-en-dehors-du-repertoire.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2015/07/21/Utiliser-des-plugins-Maven-avec-des-sources-en-dehors-du-repertoire.html</guid><category><![CDATA[Maven]]></category><category><![CDATA[Plugin Execution]]></category><category><![CDATA[No convention]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Tue, 21 Jul 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[[MAVEN] settings en ligne de commande]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2015/07/21/Utiliser-des-plugins-Maven-avec-des-sources-en-dehors-du-repertoire.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2015/07/21/Utiliser-des-plugins-Maven-avec-des-sources-en-dehors-du-repertoire.html</guid><category><![CDATA[Maven]]></category><category><![CDATA[Plugin Execution]]></category><category><![CDATA[No convention]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Tue, 21 Jul 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[[MAVEN] settings en ligne de commande]]></title><description><![CDATA[<div class="paragraph">
 <p>Indiquer un settings.xml pour maven en ligne de commande
 Il est possible de surcharger les settings.xml de base pour maven.</p>
 </div>
 <div class="paragraph">
 <p>mvn install --settings c:\user\settings.xml
     --global-settings c:\global\settings.xml</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2011/11/14/MAVEN-settings-en-ligne-de-commande.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2011/11/14/MAVEN-settings-en-ligne-de-commande.html</guid><category><![CDATA[Maven]]></category><category><![CDATA[Settings]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Mon, 14 Nov 2011 00:00:00 GMT</pubDate></item><item><title><![CDATA[Externaliser un plugin Eclipse]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2011/11/14/MAVEN-settings-en-ligne-de-commande.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2011/11/14/MAVEN-settings-en-ligne-de-commande.html</guid><category><![CDATA[Maven]]></category><category><![CDATA[Settings]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Mon, 14 Nov 2011 00:00:00 GMT</pubDate></item><item><title><![CDATA[Externaliser un plugin Eclipse]]></title><description><![CDATA[<div class="paragraph">
 <p>Afin de ne pas polluer un environnement Eclipse existant lors du test d&#8217;un plugin, Eclipse offre la possibilité d&#8217;externaliser ses plugins.
 Pour cela, il faut utiliser les fichiers link. Ces fichiers sont de simples fichier texte contenant le chemin vers le plugin.</p>
 </div>
@@ -1535,7 +1524,7 @@ Ce paramètre permet de spécifier un répertoire qui contiendra la configuratio
 <div class="paragraph">
 <p>Pour externaliser ce plugin, il faut copier les répertoires plugins et features dans un nouveau répertoire.
 Voir le plugin m2 plus haut.</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2011/09/17/Externaliser-un-plugin-Eclipse.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2011/09/17/Externaliser-un-plugin-Eclipse.html</guid><category><![CDATA[Eclipse]]></category><category><![CDATA[Plugins]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Sat, 17 Sep 2011 00:00:00 GMT</pubDate></item><item><title><![CDATA[[JBOSS] Utiliser une configuration en dehors du JBOSS_HOME]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://mikrethor.github.io/blog/2011/09/17/Externaliser-un-plugin-Eclipse.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2011/09/17/Externaliser-un-plugin-Eclipse.html</guid><category><![CDATA[Eclipse]]></category><category><![CDATA[Plugins]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Sat, 17 Sep 2011 00:00:00 GMT</pubDate></item><item><title><![CDATA[[JBOSS] Utiliser une configuration en dehors du JBOSS_HOME]]></title><description><![CDATA[<div class="paragraph">
 <p>Le but est de décorreler une configuration JBOSS du serveur lui même afin d&#8217;avoir cette configuration en gestion de conf.</p>
 </div>
 <div class="literalblock">
@@ -1546,4 +1535,4 @@ Voir le plugin m2 plus haut.</p>
 </div>
 <div class="paragraph">
 <p>Dans ce cas, le JBOSS_HOME est D:/tools/jboss et il n&#8217;y pas de configuration tartanpion dans le répertoire JBOSS_HOME/server</p>
-</div>]]></description><link>https://mikrethor.github.io/blog/2011/08/16/Utiliser-une-configuration-en-dehors-du-JBOSS-HOME.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2011/08/16/Utiliser-une-configuration-en-dehors-du-JBOSS-HOME.html</guid><category><![CDATA[Jboss]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Tue, 16 Aug 2011 00:00:00 GMT</pubDate></item></channel></rss>
+</div>]]></description><link>https://mikrethor.github.io/blog/2011/08/16/Utiliser-une-configuration-en-dehors-du-JBOSS-HOME.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2011/08/16/Utiliser-une-configuration-en-dehors-du-JBOSS-HOME.html</guid><category><![CDATA[Jboss]]></category><dc:creator><![CDATA[mikrethor]]></dc:creator><pubDate>Tue, 16 Aug 2011 00:00:00 GMT</pubDate></item></channel></rss>
