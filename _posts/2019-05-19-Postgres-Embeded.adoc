@@ -50,6 +50,7 @@ fun postgresProcess(config: PostgresConfig): PostgresProcess {
 ----
 
 The postgresConfig bean allows us to define all the database information :
+
 * host
 * port
 * user
