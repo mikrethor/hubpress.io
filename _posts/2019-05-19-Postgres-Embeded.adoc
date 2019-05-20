@@ -69,5 +69,7 @@ Extract /Users/user666/.embedpostgresql/postgresql-11.1-1-osx-binaries.zip START
 Extract /Users/user666/.embedpostgresql/postgresql-11.1-1-osx-binaries.zip DONE
 ----
 
-After this download, the database extracted and executed.
+After this first download, the database is just extracted and executed each time our app is executed.
+
+For more info, you can watch this https://github.com/mikrethor/customer-r2dbc[github repo].
 
