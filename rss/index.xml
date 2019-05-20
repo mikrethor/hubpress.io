@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Mon, 20 May 2019 02:28:50 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Postgres Embeded]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Mon, 20 May 2019 02:32:48 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Postgres Embeded]]></title><description><![CDATA[<div class="paragraph">
 <p>When I develop locally on my laptop, I usually use H2 database to test the layer between my code and the database. But sometimes it&#8217;s not enough&#8230;&#8203;</p>
 </div>
 <div class="paragraph">
@@ -49,11 +49,23 @@ fun postgresProcess(config: PostgresConfig): PostgresProcess {
 </div>
 </div>
 <div class="paragraph">
-<p>The postgresConfig bean allows us to define all the database information :
-* host
-* port
-* user
-* password</p>
+<p>The postgresConfig bean allows us to define all the database information :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>host</p>
+</li>
+<li>
+<p>port</p>
+</li>
+<li>
+<p>user</p>
+</li>
+<li>
+<p>password</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>The postgresProcess bean launch database.</p>
