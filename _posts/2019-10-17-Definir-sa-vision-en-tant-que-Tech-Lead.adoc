@@ -10,6 +10,7 @@ Définir sa vision est pour moi, la chose la plus importante à concrétiser.
 [quote, John Carmack]
 Une équipe solide peut transformer n'importe quelle vision folle en réalité.
 
+//saut de ligne 
 <<<
 Concrétement, la vision, une fois définie va permettre d'orienter tous les choix en rapport avec l'équipe et le produit.
 Lorsque, je prends du temps pour définir la vision d'équipe, je me focalise sur les aspects suivants :
@@ -77,6 +78,8 @@ Dans le pire des cas, ça vous mettra en visibilité et dans le meilleur vous r�
 
 [quote, Lao-Tseu]
 Un voyage de mille lieues commence toujours par un premier pas.
+
+//saut de ligne 
 <<<
 
 Mais concrétement, qu'apporte l'innovation technologique ?
