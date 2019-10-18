@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Fri, 18 Oct 2019 01:30:10 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Définir sa vision en tant que Tech Lead]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Fri, 18 Oct 2019 01:33:06 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Définir sa vision en tant que Tech Lead]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Définir sa vision est pour moi, la chose la plus importante à concrétiser.</p>
@@ -815,7 +815,7 @@ logs through a url in a Json format. This post is about my experiment with Ngxlo
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://mikrethor.github.io/blog/images/2018-01-17-Ngxlogger-Kibana.png" alt="Kibana NgxLogger">
+<img src="/blog/images/2018-01-17-Ngxlogger-Kibana.png" alt="Kibana NgxLogger">
 </div>
 </div>]]></description><link>https://mikrethor.github.io/blog/2018/01/17/Ngx-Logger-to-Kibana.html</link><guid isPermaLink="true">https://mikrethor.github.io/blog/2018/01/17/Ngx-Logger-to-Kibana.html</guid><category><![CDATA[Angular]]></category><category><![CDATA[NgxLogger]]></category><category><![CDATA[Elasticsearch]]></category><category><![CDATA[Kibana]]></category><dc:creator><![CDATA[Xavier Bouclet]]></dc:creator><pubDate>Wed, 17 Jan 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[Log in angular with NgxLogger]]></title><description><![CDATA[<div class="paragraph">
 <p>Coming from the Java world, I am used to use Log Framework in my projects. I was fed up of using the following.</p>
