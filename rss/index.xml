@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Fri, 18 Oct 2019 01:22:52 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Définir sa vision en tant que Tech Lead]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier's Thoughts]]></title><description><![CDATA[I am a senior software engineer working mostly in Java. I live in Montreal. Everything I write in this blog do not engage the responsibility of anyone else.]]></description><link>https://mikrethor.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Fri, 18 Oct 2019 01:26:29 GMT</lastBuildDate><atom:link href="https://mikrethor.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Définir sa vision en tant que Tech Lead]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Définir sa vision est pour moi, la chose la plus importante à concrétiser.</p>
 </div>
 <div class="quoteblock">
 <blockquote>
-Une équipe solide peut transformer n&#8217;importe quelle vision folle en réalité.
+<div class="paragraph">
+<p>Une équipe solide peut transformer n&#8217;importe quelle vision folle en réalité.</p>
+</div>
 </blockquote>
 <div class="attribution">
 &#8212; John Carmack
 </div>
 </div>
-<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p>Concrétement, la vision, une fois définie va permettre d&#8217;orienter tous les choix en rapport avec l'équipe et le produit.
 Lorsque, je prends du temps pour définir la vision d'équipe, je me focalise sur les aspects suivants :</p>
@@ -137,13 +138,14 @@ Dans le pire des cas, ça vous mettra en visibilité et dans le meilleur vous r�
 </div>
 <div class="quoteblock">
 <blockquote>
-Un voyage de mille lieues commence toujours par un premier pas.
+<div class="paragraph">
+<p>Un voyage de mille lieues commence toujours par un premier pas.</p>
+</div>
 </blockquote>
 <div class="attribution">
 &#8212; Lao-Tseu
 </div>
 </div>
-<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p>Mais concrétement, qu&#8217;apporte l&#8217;innovation technologique ?</p>
 </div>
