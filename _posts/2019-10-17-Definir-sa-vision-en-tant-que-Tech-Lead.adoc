@@ -151,6 +151,27 @@ La qualité est un élément essentiel, il faut que les règles soient plus fort
 Il faut voir comment passer de la situation courante vers l'objectif et le mieux est d'y aller par pas successifs en ayant en tête une cible lointaine.
 Si par bonheur vous atteignez la cible, cherchez en une encore plus loin.
 
+=== Les règles de sécurité
+
+La sécurité est un élément encore plus essentiel.
+En effet, une faille de sécurité exploitée peut mettre à mal la réputation et la santé financière d'une entreprise.
+
+Heureusement, les entreprises ont commencé à s'outiller avec des outils d'analyse d'artefacts.
+Il est donc facile d'ajouter une étape de gating afin d'arrêter la livraison en production d'un artefact si celui-ci contient des failles de sécurité d'un niveau non acceptable pour l'entreprise.
+
+Par contre, il faut permettre à l'équipe de livrer l'artefact si cette faille est déjà présente en production.
+Générallement il s'agit du cas ou une faille de sécurité a été découverte dans une librairie tiers.
+
+Bien sûr, il est nécessaire de s'assurer que la faille n'est pas facilement corrigeable avant de livrer.
+Selon la complexité de la faille, il faut la corriger.
+
+Une des actions préventives, à mettre en place pour éviter d'avoir à gérer les failles de sécurité, est de faire une passe de mise à jour sur les versions de librairies régulièrement pendant le développement.
+C'est à l'équipe de mettre en place une intégration continue et une livraison continue qui permettent d'assurer que la mise à jour des versions des librairies soit sécuritaire.
+
+L'idéal est que les mises à jour se fassent avec un minimum d'intervention humaine.
+Il faut donc s'outiller pour avoir un processus qui analyse les mises à jour disponibles des librairies et qui met à jour le code dès qu'une mise à jour est disponible.
+Cette mise à jour, bien sûr, doit être testée automatiquement dans un pipeline afin qu'un développeur n'ait plus qu'à valider l'ajout du code dans la base de code.
+
 === Les objectifs technologiques pour le produit
 
 Les objectifs technologiques ne sont pas là pour avoir du fun techniquement (bon un peu quand même...).
